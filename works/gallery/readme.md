@@ -1,5 +1,6 @@
 ###
 > html代码部分
+
 ```
     <div class="light-box">
         <div class="box-close">
@@ -11,8 +12,10 @@
         </div>
     </div>
 ```
+
 > css代码部分
 ```
+
 .light-box{
     position: fixed;
     left: 0;
@@ -73,8 +76,10 @@
     cursor: pointer;
 }
 ```
+
 > js主要逻辑
 ```
+
 function getSearchDate(data) {
     var num=0;
     var i=0;
