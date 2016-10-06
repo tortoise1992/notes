@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+        @keyframes my {
+            0%{
+                background-color: red;
+            }
+            25%{
+                background-color: aqua;
+                width: 400px;
+                /*缩放*/
+                -webkit-transform: scale(0.8);
+                -moz-transform: scale(0.8);
+                -ms-transform: scale(0.8);
+                -o-transform: scale(0.8);
+                transform: scale(0.8);
+            }
+            50%{
+                background-color: gray;
+                height: 400px;
+                /*位移*/
+                -webkit-transform: translate(100px,0);
+                -moz-transform: translate(100px,0);
+                -ms-transform: translate(100px,0);
+                -o-transform: translate(100px,0);
+                transform: translate(100px,0);
+                
+            }
+            75%{
+                background-color: green;
+                width: 300px;
+                /*旋转*/
+                -webkit-transform: rotate(90deg);
+                -moz-transform: rotate(90deg);
+                -ms-transform: rotate(90deg);
+                -o-transform: rotate(90deg);
+                transform: rotate(90deg);
+            }
+            100%{
+                background-color: yellow;
+                height: 300px;
+            }
+        }
+        /*none：不改变默认行为。*/
+        /*forwards ：当动画完成后，保持最后一个属性值（在最后一个关键帧中定义）。*/
+        /*backwards：在 animation-delay 所指定的一段时间内，在动画显示之前，应用开始属性值（在第一个关键帧中定义）。*/
+        /*both：向前和向后填充模式都被应用。*/
+        .box.current{
+            /*调用动画的关键*/
+            /*infinite无限循环动画*/
+            animation: my 5s ease-in .2s forwards;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+
+</div>
+<button id="btn">
+    按钮
+</button>
+<script src="jquery-1.7.2.min.js">
+
+</script>
+<script>
+//    通过按钮添加css3动画
+    $(function(){
+        $('#btn').click(function(){
+            $('.box').addClass('current')
+        });
+    })
+</script>
+</body>
+</html>

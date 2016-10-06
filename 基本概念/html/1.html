@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script type="text/javascript">
+        window.onload=function(){
+            function $(id){
+                return document.getElementById(id);
+            }
+            var box=$('box');
+            var i=0;
+            var k=0;
+            var timer=setInterval(auto,20);
+            function auto(){
+                i+=1;
+                k+=Math.sin(i)*50;
+                box.style.left=i+'px';
+                box.style.top=k+'px';
+            }
+        }
+    </script>
+</body>
+</html>
