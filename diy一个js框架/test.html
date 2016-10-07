@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <div id="box">
+        testtest
+    </div>
+<script src="js/ahui.js"></script>
+<script>
+    ahui.ready(function(){
+        var box=document.getElementById('box');
+        var cl=ahui.clone(box);
+        document.documentElement.appendChild(cl);
+    })
+</script>
+</body>
+</html>

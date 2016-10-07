@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #canvas{
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+            display: block;
+        }
+        #canvas2{
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <canvas id="canvas2"></canvas>
+    <script type="text/javascript">
+        var canvas=document.getElementById('canvas');
+        var ctx=canvas.getContext('2d');
+        var canvas=document.getElementById('canvas2');
+        var ctx2=canvas.getContext('2d');
+        var img=new Image();
+        img.src='1.jpg';
+        img.onload=function(){
+            ctx.drawImage(img,0,0,500,500);
+            var imagedata=ctx.getImageData(0,0,500,500);
+            var pixeldata=imagedata.data;
+            for(var i=0;i<500*500;i++){
+//                for (var j=0;j<500;j++){
+//
+//                }
+                pixeldata[4*i]=255
+//                pixeldata[4*i+1]=0
+//                pixeldata[4*i+2]=0
+                pixeldata[4*i+3]=255
+
+            }
+            ctx2.putImageData(imagedata,0,0,0,0,500,500)
+
+        }
+    </script>
+</body>
+</html>
