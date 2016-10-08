@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas id="box"></canvas>
+    <script type="text/javascript">
+        window.onload=function(){
+            var canvas=document.getElementById('box');
+            var ctx=canvas.getContext('2d');
+            canvas.width=1024;
+            canvas.height=720;
+            ctx.fillStyle='red';
+            ctx.beginPath();
+            ctx.arc(800,300,20,0,2*Math.PI,true);
+            ctx.closePath();
+            ctx.fill();
+            setInterval(function(){
+                draw(ctx)
+            },30);
+            var speed=0;
+            var startposition=800;
+            function draw(context){
+                speed=-7;
+                context.clearRect(0,0,1034,720);
+                startposition +=speed;
+                context.beginPath();
+                context.arc(startposition,300,20,0,2*Math.PI);
+                context.closePath();
+                context.fill();
+            }
+
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas id="test"></canvas>
+    <script type="text/javascript">
+        function point(){
+            this.x=0
+            this.y=0
+            this.r=0
+            this.fillcolor=''
+        }
+        point.prototype={
+            init:function(){
+
+            },
+            getpara:function (){
+                this.x=Math.random()*1024;
+                this.y=Math.random()*720;
+                this.r=Math.random()*50;
+                var str='0123456789abcdef'
+                var color='#'
+                for(var i=0;i<6;i++){
+                    color +=str.charAt(Math.floor(Math.random()*17))
+                }
+                this.fillcolor=color
+            },
+            draw:function(ctx){
+                this.getpara();
+                ctx.clearRect(0,0,1024,720)
+                ctx.beginPath();
+                ctx.fillStyle=this.fillcolor;
+                ctx.arc(this.x,this.y,this.r,0,2*Math.PI);
+                ctx.closePath()
+                ctx.fill()
+            }
+
+
+        }
+
+        var canvas=document.getElementById('test');
+        var context=canvas.getContext('2d');
+        canvas.width=1024
+        canvas.height=720
+        setInterval(function(){
+            run(context)
+        },100)
+        function run(ctx){
+            for(var i=0;i<20;i++){
+                var poi=new point()
+                poi.draw(ctx)
+            }
+
+        }
+
+
+    </script>
+</body>
+</html>
