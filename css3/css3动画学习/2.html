@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 300px;
+            height: 400px;
+            overflow: hidden;
+
+        }
+        #box img{
+            transition: all 0.5s;
+        }
+        #box:hover img{
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            -o-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+
+</div>
+<script type="text/javascript">
+    var w= 0,h=0;
+    // 图片地址
+    var img_url = '1.jpg?'+Date.parse(new Date());
+    // 创建对象
+    var img = new Image();
+    // 改变图片的src
+    img.src = img_url;
+    // 定时执行获取宽高
+    var check = function(){
+        w=img.width;
+        h=img.height;
+        console.log(w)
+        console.log(h)
+    };
+    var set = setInterval(check,40);
+
+    // 加载完成获取宽高
+    img.onload = function(){
+        if(w>h){
+            img.height=400;
+        }else{
+            img.width=300;
+        }
+        // 取消定时获取宽高
+        document.getElementById('box').appendChild(img);
+        clearInterval(set);
+    };
+</script>
+</body>
+</html>
