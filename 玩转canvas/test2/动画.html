@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{display: block;border: 1px solid #ccc}
+    </style>
+</head>
+<body>
+<canvas id="box" width="1000" height="700"></canvas>
+<button id="start">开始</button>
+<button id="stop">停止</button>
+<script type="text/javascript">
+    var canvas=document.getElementById('box')
+    var ctx=canvas.getContext('2d')
+    var start=document.getElementById('start')
+    var end=document.getElementById('stop')
+    var x=0
+    var play=true
+    var t=null
+    function shape(x,y,w,h){
+        this.x=x
+        this.y=y
+        this.w=w
+        this.h=h
+    }
+    var arr=[]
+
+    for(var i=0;i<10;i++){
+        var x=Math.random()*250;
+        var y=Math.random()*250
+        var width=height=Math.random()*50
+        arr.push(new shape(x,y,width,height))
+    }
+
+    function animate(){
+        ctx.clearRect(0,0,1000,700)
+        var len=arr.length;
+        for(var i=0;i<len;i++){
+            arr[i].x+=Math.random()*4-2
+            arr[i].y+=Math.random()*4-2
+            ctx.fillRect(arr[i].x,arr[i].y,arr[i].w,arr[i].h)
+        }
+
+        if(play){
+            t=setInterval(animate,33)
+        }
+    }
+
+
+    start.onclick=function(){
+            animate()
+            play=false
+    }
+    end.onclick=function(){
+        play=true
+        clearInterval(t)
+    }
+
+</script>
+</body>
+</html>

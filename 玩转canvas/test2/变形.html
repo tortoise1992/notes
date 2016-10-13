@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{display: block;border: 1px solid #ccc}
+    </style>
+</head>
+<body>
+<canvas id="box" width="1000" height="700"></canvas>
+<script type="text/javascript">
+    var canvas=document.getElementById('box')
+    var ctx=canvas.getContext('2d')
+    ctx.fillStyle='yellow'
+    ctx.save()
+    ctx.shadowBlur=20
+    ctx.shadowColor='#fee000'
+    ctx.beginPath()
+    ctx.arc(300,300,100,0,Math.PI*2,false)
+    ctx.closePath()
+    ctx.fill()
+</script>
+</body>
+</html>

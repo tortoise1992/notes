@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{display: block;border: 1px solid #ccc}
+    </style>
+</head>
+<body>
+<canvas id="box" width="1000" height="700"></canvas>
+<script type="text/javascript">
+    var canvas=document.getElementById('box')
+    var ctx=canvas.getContext('2d')
+    var img=new Image()
+    img.src='1.jpg'
+    img.onload=function(){
+        ctx.drawImage(img,0,0,600,600,100,100,200,200)
+    }
+
+</script>
+</body>
+</html>
