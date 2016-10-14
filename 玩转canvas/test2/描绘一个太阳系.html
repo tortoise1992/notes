@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        canvas{
+            border:1px solid #cccccc;
+            display: block;
+        }
+    </style>
+<body>
+<canvas id="canvas" width="1000px" height="700px">
+
+</canvas>
+<script type="text/javascript">
+    var canvas=document.getElementById('canvas');
+    var ctx=canvas.getContext('2d');
+    var play=true;
+    var angel=0;
+    var radius=200;
+    function ani(){
+        ctx.clearRect(0,0,1000,700);
+        ctx.beginPath();
+        ctx.shadowBlur=20
+        ctx.shadowColor='#fee000'
+        ctx.fillStyle='#fee000'
+        ctx.arc(300,300,50,0,Math.PI*2)
+        ctx.closePath()
+        ctx.fill();
+        ctx.beginPath();
+        ctx.fillStyle='black'
+        ctx.shadowBlur=0
+        ctx.shadowColor='#000'
+        angel +=1;
+        if(angel>360){
+            angel=0
+        }
+        var x=300+radius*Math.cos(angel*Math.PI/180);
+        var y=300+radius*Math.sin(angel*Math.PI/180);
+        ctx.arc(x,y,20,0,Math.PI*2)
+        ctx.closePath()
+        ctx.fill()
+
+    }
+    setInterval(ani,33)
+</script>
+</body>
+</html>
