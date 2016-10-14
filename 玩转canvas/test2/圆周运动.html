@@ -24,6 +24,8 @@
         this.y=y
         this.w=w
         this.h=h
+        this.radius=50*Math.random()
+        this.angel=0
     }
     var arr=[]
 
@@ -38,9 +40,13 @@
         ctx.clearRect(0,0,1000,700)
         var len=arr.length;
         for(var i=0;i<len;i++){
-            arr[i].x+=Math.random()*4-2
-            arr[i].y+=Math.random()*4-2
-            ctx.fillRect(arr[i].x,arr[i].y,arr[i].w,arr[i].h)
+            var x=arr[i].x+(arr[i].radius*Math.cos(arr[i].angel*(Math.PI/180)))
+            var y=arr[i].y+(arr[i].radius*Math.sin(arr[i].angel*(Math.PI/180)))
+            arr[i].angel +=5
+            if(arr[i].angel>360){
+                arr[i].angel=0
+            }
+            ctx.fillRect(x,y,arr[i].w,arr[i].h)
         }
 
         if(play){
